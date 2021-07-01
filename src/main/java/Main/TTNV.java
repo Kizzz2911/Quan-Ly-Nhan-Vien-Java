@@ -71,7 +71,7 @@ public class TTNV extends javax.swing.JFrame {
     long SoNV, sotrang, trang = 1;
 
     public void count() {
-        String str = "SELECT COUNT(*) FROM Employees";
+        String str = "SELECT COUNT(*) FROM Employees where TrangThai = 1";
         try ( Connection connection = Connect.getConnection();  PreparedStatement pst = connection.prepareStatement(str);) {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -96,7 +96,7 @@ public class TTNV extends javax.swing.JFrame {
     long SoNVFind, sotrangFind, trangFind = 1;
 
     public void countFind(String name) {
-        String str = "select count(*) FROM dbo.Employees where ID like '%" + name + "%' OR FullName LIKE N'%" + name + "%'";
+        String str = "select count(*) FROM dbo.Employees where TrangThai = 1 and ID like '%" + name + "%' OR FullName LIKE N'%" + name + "%'";
 
         try ( Connection connection = Connect.getConnection();  PreparedStatement pst = connection.prepareStatement(str);) {
             ResultSet rs = pst.executeQuery();
